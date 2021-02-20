@@ -1,17 +1,36 @@
-const express = require('express')
 require('dotenv').config()
+const express = require('express')
 
 
+require('./db/mongoose')
+const userRouter = require('./Routers/user')
+const userInterface = require('./Routers/interface')
+const path = require('path')
+const hbs = require('hbs')
 
+const User = require('./models/user')
 
 const app = express()
-
-
 const port = process.env.PORT || 3000
 
-app.use(express.json())
+//variabelen 
 
-//cooler tooller stuff 
+
+//view engine 
+const publicDirectoryPath = path.join(__dirname, '../public')
+const viewsPath = path.join(__dirname, '../templates/views')
+const partialsPath = path.join(__dirname, '../templates/partials')
+
+app.set('view engine', 'hbs')
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
+
+
+//routers
+app.use(express.static(publicDirectoryPath))
+app.use(express.json())
+app.use(userRouter)
+app.use(userInterface)
 
 
 
@@ -20,9 +39,27 @@ app.listen(port, () => {
 })
 
 
-console.log(process.env.TEST)
 
 
+
+const b = async ()=>{
+
+
+
+    try {  
+        const users = await User.find({}) 
+        var distance = 0
+        users.forEach((user)=> {
+            distance = distance + user.distance      
+        })   
+        process.env.DISTOTAL = distance
+       // console.log( "das ist funkiton "+ process.env.DISTOTAL +"abc"+ distance+ "" )
+            
+    } catch(e){console.log(e)}
+    
+}
+
+ setInterval(b,  50000 )
 
 
 
