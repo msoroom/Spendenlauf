@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 const validator = require('validator')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const { Timestamp } = require('mongodb')
+
 
 const Runs = require('./runs')
 
@@ -81,13 +81,9 @@ const userSchema = new mongoose.Schema({
 
 
 userSchema.virtual('runs',{
-
 ref: 'Run',
 localField:'_id',
-foreignField: 'ownder'
-
-
-
+foreignField: 'owner'
 })
 
 
@@ -153,11 +149,13 @@ userSchema.statics.findByCredentials = async (email, password) => {
 
 userSchema.pre('save', async function (next) {
 
+   
     const user = this 
 
     if(user.isModified('password')){
 
         user.password = await bcrypt.hash(user.password,8)
+
 
     }
 

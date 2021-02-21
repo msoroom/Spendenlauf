@@ -140,10 +140,6 @@ router.delete('/users/me',auth, async (req, res) => {
 
     try {
 
-        // const user = await User.findByIdAndDelete(req.user._id)
-
-
-        // res.send(user)
 
         await req.user.remove()
 

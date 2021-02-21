@@ -1,60 +1,60 @@
 const express  = require('express')
 const Runs = require('../models/runs')
 const auth = require('../middleware/auth')
+const User = require('../models/user')
 
 const router = new express.Router()
 
 
 router.post('/runs',auth, async(req, res) => {
     
-    const run = new Runs({
+
+    
+
+    var run = new Runs({
         ...req.body,
         owner : req.user._id
-        
-
 
     })
 
-
     try {
-      
-
+    
         
-        await run.save()
+         await run.save()
+        
+     
+         
+     
+
+    req.user.distance += run.distance
+
+     await req.user.save()
+
         res.status(200).send(run)
-
-    } catch (error) {
-        
+    } catch (error) {    
+       console.log(error)
         res.status(500).send()
-
     }
-
-
-
 })
 
 // GET /run?limit=10&skip10
 // GET /run?sortBy=createdAt:desc||asc
 router.get('/runs',auth, async (req, res) => {
-    
-        const match = {}
+        
         const sort = {}
 
-       
         if(req.query.sortBy){
 
             const parts = req.query.sortBy.split(':')
 
             sort[parts[0]] = parts[1] === 'desc' ? -1 : 1
-
         }
-    
+
     try {
         
         await req.user.populate({
 
         path: 'runs',
-        match,
         options:{
 
             limit: parseInt(req.query.limit),
@@ -104,7 +104,11 @@ router.delete('/runs/:id',auth, async(req,res)=>{
         const run = await Runs.findByIdAndDelete({_id:req.params.id, owner: req.user._id})
 
         if(!run) return res.status(404).send()
+        
+        
+        req.user.distance -= run.distance
 
+        await req.user.save()
         res.send(run)
 
 

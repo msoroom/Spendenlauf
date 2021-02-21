@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const User = require('./user')
 
 const runSchema = new mongoose.Schema({
 
@@ -28,6 +29,8 @@ const runSchema = new mongoose.Schema({
 
 
 })
+
+
 
 
 const Runs = new mongoose.model('Run',runSchema)

@@ -5,6 +5,7 @@ const express = require('express')
 require('./db/mongoose')
 const userRouter = require('./Routers/user')
 const userInterface = require('./Routers/interface')
+const runsRouter = require('./Routers/runs')
 const path = require('path')
 const hbs = require('hbs')
 const cookieParser = require('cookie-parser')
@@ -33,6 +34,7 @@ app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
 app.use(userRouter)
 app.use(userInterface)
+app.use(runsRouter)
 
 
 
@@ -55,13 +57,13 @@ const b = async ()=>{
             distance = distance + user.distance      
         })   
         process.env.DISTOTAL = distance
-       // console.log( "das ist funkiton "+ process.env.DISTOTAL +"abc"+ distance+ "" )
+       console.log( "das ist funkiton "+ process.env.DISTOTAL +"abc"+ distance+ "" )
             
     } catch(e){console.log(e)}
     
 }
 
- setInterval(b,  50000 )
+ setInterval(b,  5000 )
 
 
 

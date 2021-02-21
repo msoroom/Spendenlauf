@@ -13,6 +13,7 @@ var requestOptions = {
   headers: myHeaders,
   redirect: 'follow'
 };
+
 fetch("/users/logout", requestOptions)
   .then(response => response.text())
   .then(result => console.log(result))
