@@ -16,14 +16,14 @@ ac.addEventListener('submit', async (e)=>{
   const pwdt2= pwd2d.value
   
   
-  if( pwdt1 == pwdt2 ){
+  if( !pwdt1 == pwdt2 ) return  
     
     
-  }else return  
+  
  
  
  
-  var myHeaders = new Headers();
+var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
@@ -39,24 +39,13 @@ const requestOptions = {
   redirect: 'follow'
 };
 
-try {
+
 
  //const data =  await (await fetch("http://localhost:3000/users", requestOptions)).text()
- fetch("http://localhost:3000/users", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
+ fetch("/users", requestOptions)
+  .then(response => window.location.assign('/me'))
+
   .catch(error => console.log('error', error));
-
-
-} catch (error) {
-  
-}
-
-// .then(response => response.text())
-//   .then(result => console.log(result))
-//   .catch(error => console.log('error', error));
-
-
 
 
 

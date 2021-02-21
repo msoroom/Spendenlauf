@@ -6,7 +6,7 @@
     <title>MSO Rooms - Login</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/Login.css'>
-    <script src='main.js'></script>
+    
   
 </head>
 <body>
@@ -35,16 +35,14 @@
   
       <!-- Login Form -->
       <form>
-        <input type="text" id="login" class="fadeIn second" name="login" placeholder="vorname.nachname@marienschule.com">
-        <input type="text" id="password" class="fadeIn third" name="login" placeholder="Ihr Office Passwort">
-        <input type="submit" class="fadeIn fourth" value="Log In">
+        <input type="text" id="login" class="fadeIn second"  placeholder="vorname.nachname@marienschule.com" >
+        <input type="password" id="password" class="fadeIn third"  placeholder="Ihr Office Passwort" >
+        <button id="pissof">Submit</button>
       </form>
   
-      <!-- Remind Passowrd -->
-      <div id="formFooter">
-        <a class="underlineHover" href="https://masman.marienschule-intern.de/UserPortal/Account/RequestNewPassword">Forgot Password?</a>
-      </div>
-  
+    <h1 id="INFO"></h1>
+
+
     </div>
   </div>
   <footer>
@@ -54,5 +52,8 @@
   </footer>
   
 </body>
+
+<script src="/js/logIn.js"></script>
+
 </html>
 

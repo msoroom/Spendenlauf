@@ -133,33 +133,7 @@ router.patch('/users/me',auth, async (req, res) => {
 
 
 })
-router.get('/totalrun', async (req, res) => {
 
-    
-    
-    try {
-        
-        const users = await User.find({})
-     
-        var distance = 0
-
-        users.forEach((user)=> {
-
-            distance = distance + user.distance
-            
-        })
-        console.log({distance : distance})
-        
-        res.send({distance})
-
-    } catch (e) {
-       
-         res.status(500).send()
-
-    }
-
-
-})
 
 router.delete('/users/me',auth, async (req, res) => {
 

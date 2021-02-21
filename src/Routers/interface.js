@@ -40,12 +40,7 @@ router.get('/singIn',(req,res)=>{
 
 res.render('login', {
 
-
-
-
 })
-
-
 
 })
 
@@ -54,7 +49,8 @@ router.get('/me',auth,(req,res)=>{
 res.render('me',{
 
 name : req.user.name,
-Userdistance: req.user.distance
+Userdistance: req.user.distance,
+distance: process.env.DISTOTAL
 })
 
 
