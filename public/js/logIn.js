@@ -11,7 +11,7 @@ button.addEventListener('submit', async(e)=>{
    
 
 
-    e.preventDefault()
+   
     const email = emaild.value
     const pwd = pwdd.value
 

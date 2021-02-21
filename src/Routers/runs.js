@@ -36,9 +36,9 @@ router.post('/runs',auth, async(req, res) => {
         res.status(500).send()
     }
 })
-
+// GET /runs?sortBy=stufe=strufe
 // GET /runs?limit=10&skip10
-// GET /runs?sortBy=createdAt:desc||asc
+// GET /runs?sortBy=createdAt:desc||asc / sortBy=stufe
 router.get('/runs',auth, async (req, res) => {
         
         const sort = {}
