@@ -4,6 +4,8 @@ const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
 const { Timestamp } = require('mongodb')
 
+const Runs = require('./runs')
+
 
 const userSchema = new mongoose.Schema({
     name: {
@@ -49,7 +51,17 @@ const userSchema = new mongoose.Schema({
         default: 0
 
     },
+    stufe:{
+        type: Number,
+        require: true,
+        validate(value){
+            const validstufen = [5,6,7,8,9,10,11,12, 2 ]
 
+            if(!validstufen.includes(value)) throw new Error('Das ist keine Stufe')
+
+        }
+
+    },
 
 
     tokens:[{
@@ -60,8 +72,23 @@ const userSchema = new mongoose.Schema({
        } 
 
     }]
+},{ 
+    
+    timestamps: true
+
 })
 
+
+
+userSchema.virtual('runs',{
+
+ref: 'Run',
+localField:'_id',
+foreignField: 'ownder'
+
+
+
+})
 
 
 userSchema.methods.generateAuthToken = async function() {
@@ -139,10 +166,18 @@ userSchema.pre('save', async function (next) {
 
 //delteUsertasks when user is removed
 
+userSchema.pre('remove', async function(next){
+
+
+await Runs.deleteMany({id: this._id})
+
+next()
+
+})
 
 
 
-const User = mongoose.model('User', userSchema
-)
+
+const User = mongoose.model('User', userSchema)
 
 module.exports = User
