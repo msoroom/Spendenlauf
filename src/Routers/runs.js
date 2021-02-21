@@ -37,8 +37,8 @@ router.post('/runs',auth, async(req, res) => {
     }
 })
 
-// GET /run?limit=10&skip10
-// GET /run?sortBy=createdAt:desc||asc
+// GET /runs?limit=10&skip10
+// GET /runs?sortBy=createdAt:desc||asc
 router.get('/runs',auth, async (req, res) => {
         
         const sort = {}

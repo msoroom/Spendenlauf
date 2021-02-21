@@ -56,4 +56,30 @@ distance: process.env.DISTOTAL
 
 })
 
+router.get('/datenschutz', (req,res)=>{
+
+    res.render('Datenschut', {
+
+
+    })
+
+})
+router.get('/impressum', (req,res)=>{
+
+    res.render('impressum', {
+
+        
+    })
+
+})
+router.get('/UeberdasProjekt', (req,res)=>{
+
+    res.render('UeberdasProjekt', {
+
+        
+    })
+
+})
+
+
 module.exports = router

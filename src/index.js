@@ -57,7 +57,7 @@ const b = async ()=>{
             distance = distance + user.distance      
         })   
         process.env.DISTOTAL = distance
-       console.log( "das ist funkiton "+ process.env.DISTOTAL +"abc"+ distance+ "" )
+       //console.log( "das ist funkiton "+ process.env.DISTOTAL +"abc"+ distance+ "" )
             
     } catch(e){console.log(e)}
     
