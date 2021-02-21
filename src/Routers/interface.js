@@ -1,6 +1,7 @@
 const express = require('express')
 const router = new express.Router()
 const hbs = require('hbs')
+const auth = require('../middleware/auth')
 
 
 router.get('/',(req,res)=>{
@@ -44,6 +45,17 @@ res.render('login', {
 
 })
 
+
+
+})
+
+router.get('/me',auth,(req,res)=>{
+
+res.render('me',{
+
+name : req.user.name,
+Userdistance: req.user.distance
+})
 
 
 })

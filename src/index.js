@@ -7,11 +7,11 @@ const userRouter = require('./Routers/user')
 const userInterface = require('./Routers/interface')
 const path = require('path')
 const hbs = require('hbs')
-
+const cookieParser = require('cookie-parser')
 const User = require('./models/user')
 
 const app = express()
-const port = process.env.PORT || 3000
+const port = process.env.PORT
 
 //variabelen 
 
@@ -29,6 +29,8 @@ hbs.registerPartials(partialsPath)
 //routers
 app.use(express.static(publicDirectoryPath))
 app.use(express.json())
+app.use(cookieParser())
+app.use(express.urlencoded({ extended: false }))
 app.use(userRouter)
 app.use(userInterface)
 
