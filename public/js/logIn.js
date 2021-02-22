@@ -9,7 +9,7 @@ const val = document.querySelector('#INFO')
 button.addEventListener('submit', async(e)=>{
 
    
-
+  e.preventDefault()
 
    
     const email = emaild.value
