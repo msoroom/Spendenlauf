@@ -1,5 +1,6 @@
 const { randomInt } = require('crypto')
 const fs = require('fs')
+const User = require('../models/user')
 
 const names = fs.readFileSync('fruits.txt').toString().split('\n')
 const colors= fs.readFileSync('colors.txt').toString().split('\n')
@@ -25,16 +26,31 @@ const genPassword = () =>{
 
 }
 
-const clearfile = () =>{
+const genid = async() =>{
+const users = await User.find({})
 
-  const a =   names.filter((name) => !name.includes(' ') )
+const id = user.array.forEach(element => {
+  
 
-    
+  
+});
 
 
+while(true){
+
+  
 
 
 }
 
 
+}
+
+
+
 console.log(genPassword())
+
+
+
+
+
