@@ -21,7 +21,7 @@ button.addEventListener('submit', async(e)=>{
     myHeaders.append("Content-Type", "application/json");
     
     var raw = JSON.stringify({
-        "email":email,
+        "nickname":email,
         "password":pwd
     });
     

@@ -1,54 +1,39 @@
-const { randomInt } = require('crypto')
-const fs = require('fs')
-const User = require('../models/user')
 
-const names = fs.readFileSync('fruits.txt').toString().split('\n')
-const colors= fs.readFileSync('colors.txt').toString().split('\n')
+const { randomInt } = require('crypto');
+const fs = require('fs');
 
 
 
-
-
-const genPassword = () =>{
-
-        var p1 = names[randomInt(names.length -1)];
-        p1 += randomInt(99)
-        p1 += colors[randomInt(colors.length -1)]
-         
-        
-
-       
+const names = fs.readFileSync('./src/Utils/fruits.txt').toString().split('\n')
+const colors = fs.readFileSync('./src/Utils/colors.txt').toString().split('\n')
 
 
 
 
-        return p1 
+
+module.exports.genPassword = () => {
+
+  var p1 = names[randomInt(names.length - 1)];
+  p1 += randomInt(99)
+  p1 += colors[randomInt(colors.length - 1)]
+
+  return p1
 
 }
 
-const genid = async() =>{
-const users = await User.find({})
+module.exports.genid = () => {
 
-const id = user.array.forEach(element => {
-  
-
-  
-});
-
-
-while(true){
-
-  
-
-
-}
-
-
+  const a = ((Math.random() * 1_000_000_0)).toFixed(0)
+  var num = "0".repeat(7 - a.length) + a
+  return num
 }
 
 
 
-console.log(genPassword())
+
+
+
+
 
 
 

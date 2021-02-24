@@ -1,8 +1,6 @@
 const ac = document.querySelector('form')
 const named  = document.querySelector('.name')
-const emaild = document.querySelector('.email')
-const pwd1d  = document.querySelector('.password')
-const pwd2d  = document.querySelector('.repeat-password')
+
 const succ = document.querySelector('#abc')
 const drop = document.querySelector('#drop')
 
@@ -10,13 +8,6 @@ const drop = document.querySelector('#drop')
 ac.addEventListener('submit', async (e)=>{
   e.preventDefault()
 
-
-
-  
-  const pwdt1= pwd1d.value
-  const pwdt2= pwd2d.value
-   
-  if( !pwdt1 == pwdt2 ) return  
 
   var stufe = drop.value
 
@@ -27,10 +18,9 @@ var myHeaders = new Headers();
 myHeaders.append("Content-Type", "application/json");
 
 var raw = JSON.stringify({
-"name":named.value,
-"email":emaild.value,
-"password": pwdt1,
-"stufe": stufe
+"nickname":named.value,
+"stufe":stufe
+
 });
 
 const requestOptions = {
@@ -40,10 +30,31 @@ const requestOptions = {
   redirect: 'follow'
 };
 
- //const data =  await (await fetch("http://localhost:3000/users", requestOptions)).text()
- fetch("/users", requestOptions)
-  .then(response => window.location.assign('/me'))
+ 
+ fetch("/users", requestOptions).then(res => res.text())
+  .then(response => {
 
+    if(response.error) {
+
+      succ.textContent = 'faild'
+
+    }
+    else{
+     
+      response = JSON.parse(response)
+
+      console.log(response.creds)
+
+      succ.textContent = "Öfentlicherzugang: " +window.location.origin+"/me/"+ response.creds.uid +"\n Password:"+JSON.stringify(response.creds.password)
+    
+    }
+
+  })
+    
+
+    
   .catch(error => console.log('error', error));
 
 })
+//Cuckoo38indigo
+//agdadg

@@ -39,7 +39,7 @@ router.post('/runs',auth, async(req, res) => {
 // GET /runs?sortBy=stufe=strufe
 // GET /runs?limit=10&skip10
 // GET /runs?sortBy=createdAt:desc||asc / sortBy=stufe
-router.get('/runs',auth, async (req, res) => {
+router.get('/runs/me',auth, async (req, res) => {
         
         const sort = {}
 
@@ -71,6 +71,40 @@ router.get('/runs',auth, async (req, res) => {
         res.status(500).send()
     }
     
+})
+
+//public backpoint for stufen fetching 
+// GET /runs?sortBy=stufe=strufe
+// GET /runs?limit=10&skip10
+// GET /runs?sortBy=createdAt:desc||asc / sortBy=stufe
+router.get('/runs', async (req, res) => {
+        
+    const sort = {}
+
+    if(req.query.sortBy){
+
+        const parts = req.query.sortBy.split(':')
+
+        sort[parts[0]] = parts[1] === 'desc' ? -1 : 1
+    }
+
+try {
+    
+    runs = await Runs.find({},{
+
+        options:{
+            sort
+        }
+    
+       })
+
+
+   res.send(runs)
+
+} catch (error) {
+    res.status(500).send()
+}
+
 })
 
 router.get('/runs/:id',auth, async(req, res) => {

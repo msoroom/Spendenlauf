@@ -2,19 +2,53 @@ const express = require('express')
 const router = new express.Router()
 const User = require('../models/user')
 const auth = require('../middleware/auth')
+const Paid = require('../Utils/GenOhneBezug') 
 
 router.post('/users', async (req, res) => {
-    const user = new User(req.body)
+    
+    var creds = {}
+    while (true) {
 
+        const uid = Paid.genid()
+        const password = Paid.genPassword()
+
+        creds = {
+
+            uid,
+            password
+
+        }
+
+        const temp = await User.find(creds)
+
+        
+        
+        if(temp.length == 0) break
+
+
+    }
+  
+    
+    
+    
+    
+    const user = new User({
+        ...req.body,
+        ...creds
+
+
+    })
+    console.log(user)
     try {
         await user.save()
 
         const token = await user.generateAuthToken()
         res.cookie('auth_token', token)
-        res.status(201).send({ user, token })
+        res.status(201).send({ user, token, creds })
 
     }
     catch (e) {
+        console.log(e)
         res.status(401).send()
 
     }

@@ -12,6 +12,11 @@ const userSchema = new mongoose.Schema({
         required: true,
         trim: true
     },
+    uid:{
+        type: String,
+        require:true
+
+    },
     
    
     password: {
@@ -126,17 +131,7 @@ next()
 
 })
 
-userSchema.pre('init',async function(next){
 
-   const id =  uid.generate()
-
-   this.uid = id;
-
- 
-
-next()
-
-})
 
 
 
