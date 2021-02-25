@@ -12,7 +12,7 @@
   
   
   .navbar {
-    background-color: #8da584;
+    background-color: #ec6d07;
     height: 50px;
   }
   
@@ -244,7 +244,8 @@ html {
   /* ANIMATIONS */
   
   /* Simple CSS3 Fade-in-down Animation */
-  .fadeInDown {
+ 
+  /* .fadeInDown {
     -webkit-animation-name: fadeInDown;
     animation-name: fadeInDown;
     -webkit-animation-duration: 1s;
