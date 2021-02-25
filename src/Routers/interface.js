@@ -61,8 +61,10 @@ router.get('/profiles/:id', async (req, res) => {
 
         
         res.render('publicuser',{
-
-            stuff:user
+            nickname: user.nickname,
+            distance: user.distance,
+            
+            
 
         })
         
