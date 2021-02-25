@@ -2,10 +2,14 @@ const express = require('express')
 const router = new express.Router()
 const User = require('../models/user')
 const auth = require('../middleware/auth')
-const Paid = require('../Utils/GenOhneBezug') 
+const Paid = require('../Utils/GenOhneBezug')
+const qr = require('qrcode')
+const fs = require('fs')
+const sharp = require('sharp')
+const {PassThrough} = require('stream')
 
 router.post('/users', async (req, res) => {
-    
+
     var creds = {}
     while (true) {
 
@@ -19,32 +23,43 @@ router.post('/users', async (req, res) => {
 
         }
 
-        const temp = await User.find(creds)
+        const temp = await User.find({uid:creds.uid})
 
-        
-        
-        if(temp.length == 0) break
+
+
+        if (temp.length == 0) break
 
 
     }
-  
+    
+   
+    const url = String(req.protocol + '://' + req.get('host') +'/profiles/'+ creds.uid)
     
     
-    
-    
+   
+    try{
+        
+
+      const pic = await fetch('/qr/'+url)
+
+        
+    } catch(err){
+        console.error('Failed to return content', err);
+    }
+
     const user = new User({
         ...req.body,
-        ...creds
+        ...creds,
+        qrpic: res.qrpic
+           
 
 
     })
-    console.log(user)
     try {
         await user.save()
-
         const token = await user.generateAuthToken()
         res.cookie('auth_token', token)
-        res.status(201).send({ user, token, creds })
+        res.status(201).send({ user, token, creds, qrpic :res.qrpic})
 
     }
     catch (e) {
@@ -66,7 +81,7 @@ router.post('/users/login', async (req, res) => {
         const token = await user.generateAuthToken()
 
         res.cookie('auth_token', token)
-        res.send({ user , token })
+        res.send({ user, token })
 
     } catch (e) {
 
@@ -138,7 +153,7 @@ router.get('/users/me', auth, async (req, res) => {
 
 
 
-router.patch('/users/me',auth, async (req, res) => {
+router.patch('/users/me', auth, async (req, res) => {
 
     const updates = Object.keys(req.body)
     const allowedupdates = ['name', 'email', 'password', 'age']
@@ -149,7 +164,7 @@ router.patch('/users/me',auth, async (req, res) => {
 
     try {
 
-        
+
 
         updates.forEach((update) => req.user[update] = req.body[update])
 
@@ -169,7 +184,7 @@ router.patch('/users/me',auth, async (req, res) => {
 })
 
 
-router.delete('/users/me',auth, async (req, res) => {
+router.delete('/users/me', auth, async (req, res) => {
 
 
     try {
@@ -190,6 +205,53 @@ router.delete('/users/me',auth, async (req, res) => {
 
 
 })
+
+router.get('/users/qr/:id', async (req, res) =>{
+
+
+    console.log('a')
+
+    try {
+        
+        const user = await User.find(req.params.uid)
+        console.log(user)
+        if(!user.qrpic||!user){
+
+            throw new Error()
+
+
+        }
+        
+
+        res.set('Content-Type','image/png')
+
+        res.send(user.qrpic)
+
+    } catch (e) {
+        res.status(404).send()
+    }
+
+
+
+})
+router.get('/qr/:content', async (req, res,) => {
+    try{
+        const content = req.params.content;            
+        const qrStream = new PassThrough();
+        const result = await QRCode.toFileStream(qrStream, content,
+                    {
+                        type: 'png',
+                        width: 200,
+                        errorCorrectionLevel: 'H'
+                    }
+                );
+
+        qrStream.pipe(res);
+    } catch(err){
+        console.error('Failed to return content', err);
+    }
+})
+
 
 
 

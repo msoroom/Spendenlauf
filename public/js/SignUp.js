@@ -46,7 +46,7 @@ const requestOptions = {
       console.log(response.creds)
 
       succ.textContent = "Öfentlicherzugang: " +window.location.origin+"/me/"+ response.creds.uid +"\n Password:"+JSON.stringify(response.creds.password)
-    
+      
     }
 
   })
