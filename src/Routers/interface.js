@@ -85,7 +85,8 @@ router.get('/me', auth, (req, res) => {
 
         name: req.user.name,
         Userdistance: req.user.distance,
-        distance: process.env.DISTOTAL
+        distance: process.env.DISTOTAL,
+        uid: req.user.uid
     })
 
 

@@ -3,13 +3,11 @@ const router = new express.Router()
 const User = require('../models/user')
 const auth = require('../middleware/auth')
 const Paid = require('../Utils/GenOhneBezug')
-const qr = require('qrcode')
-const fs = require('fs')
-const sharp = require('sharp')
-const {PassThrough} = require('stream')
+
+
 
 router.post('/users', async (req, res) => {
-
+    
     var creds = {}
     while (true) {
 
@@ -31,35 +29,23 @@ router.post('/users', async (req, res) => {
 
 
     }
-    
-   
     const url = String(req.protocol + '://' + req.get('host') +'/profiles/'+ creds.uid)
     
-    
+    creds.qrpic = await Paid.qrcode(url)
    
-    try{
-        
-
-      const pic = await fetch('/qr/'+url)
-
-        
-    } catch(err){
-        console.error('Failed to return content', err);
-    }
-
     const user = new User({
         ...req.body,
-        ...creds,
-        qrpic: res.qrpic
-           
-
-
+        ...creds
+      
     })
+   
+
+
     try {
         await user.save()
         const token = await user.generateAuthToken()
         res.cookie('auth_token', token)
-        res.status(201).send({ user, token, creds, qrpic :res.qrpic})
+        res.status(201).send({ user, token, creds })
 
     }
     catch (e) {
@@ -69,6 +55,7 @@ router.post('/users', async (req, res) => {
     }
 
 
+   
 
 })
 
@@ -77,19 +64,20 @@ router.post('/users/login', async (req, res) => {
 
     try {
 
-        const user = await User.findByCredentials(req.body.email, req.body.password)
+        const user = await User.findByCredentials(req.body.nickname, req.body.password)
         const token = await user.generateAuthToken()
 
         res.cookie('auth_token', token)
         res.send({ user, token })
 
     } catch (e) {
-
+        
         res.status(400).send()
 
     }
 
 
+        
 
 })
 
@@ -206,50 +194,31 @@ router.delete('/users/me', auth, async (req, res) => {
 
 })
 
-router.get('/users/qr/:id', async (req, res) =>{
+router.get('/users/:id/qr', async (req, res) =>{
 
-
-    console.log('a')
-
+    
     try {
         
-        const user = await User.find(req.params.uid)
-        console.log(user)
-        if(!user.qrpic||!user){
+        const user = await User.find({uid :req.params.id})
+       
+        if(!user[0].qrpic||!user){
 
             throw new Error()
 
 
         }
-        
 
         res.set('Content-Type','image/png')
-
-        res.send(user.qrpic)
+        const buffer = user[0].qrpic
+        res.send(buffer)
 
     } catch (e) {
+        console.log(e)
         res.status(404).send()
     }
 
 
 
-})
-router.get('/qr/:content', async (req, res,) => {
-    try{
-        const content = req.params.content;            
-        const qrStream = new PassThrough();
-        const result = await QRCode.toFileStream(qrStream, content,
-                    {
-                        type: 'png',
-                        width: 200,
-                        errorCorrectionLevel: 'H'
-                    }
-                );
-
-        qrStream.pipe(res);
-    } catch(err){
-        console.error('Failed to return content', err);
-    }
 })
 
 
