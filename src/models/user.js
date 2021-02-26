@@ -36,6 +36,11 @@ const userSchema = new mongoose.Schema({
         type: Number,
         default: 0
     },
+    qrpic:{
+        type: Buffer,
+
+
+    },
     stufe:{
         type: Number,
         require: true,
@@ -50,11 +55,7 @@ const userSchema = new mongoose.Schema({
         require:true
        } 
     }],
-    qrpic:{
-        type:Buffer,
-
-
-    }
+    
 
 
 },{ 
@@ -92,10 +93,10 @@ return userObjekt
 
 }
 
-userSchema.statics.findByCredentials = async (email, password) => {
+userSchema.statics.findByCredentials = async (nickname, password) => {
 
 
-        const user = await User.findOne({ email })
+        const user = await User.findOne({ nickname })
 
         if (!user) throw new Error('Unabel to login')
            
