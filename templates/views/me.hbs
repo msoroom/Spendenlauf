@@ -3,26 +3,38 @@
 <html>
 
 <head>
-    
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>MSOgoesBolivien - Dashboard</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel="stylesheet" href="/css/styles.css">
 </head>
 
 <body id="Content">
 {{>nav}} 
-{{>runned}}
 
+<div class="center-align">
+{{>runned}}
 
 
 
  <h2>{{name}}</h2>
 
 Du bist schon {{Userdistance}} Kilometer gelaufen
-
+</div>
 
 
 </body>
-    
+    <div class="center-align">
     {{>addarun}}
 
-    
+    </div>
+
+<!-- Footer mit Impressums und Datenschutz Links -->
+<footer>
+  <p>&copy; Copyrigt 2021 Robin W. & Jonas L. im Auftrag der Marienschule Opladen
+  </p>
+    <p><a href="/impressum">Impressum</a> <a href="/Datenschutz">Datenschutz</a></p>
+</footer>
+
 </html>

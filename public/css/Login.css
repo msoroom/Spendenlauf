@@ -4,6 +4,11 @@
     justify-content: center;
     color: White;
   }
+  .center-align {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
   body {
     margin: 0;
@@ -77,7 +82,7 @@
   }
 
 html {
-    background-color: #000000;
+    background-color: #A6A6A6;
   }
   
   body {
@@ -280,7 +285,7 @@ html {
     }
   }
   
-  /* Simple CSS3 Fade-in Animation */
+  /* Simple CSS3 Fade-in Animation 
   @-webkit-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @-moz-keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
   @keyframes fadeIn { from { opacity:0; } to { opacity:1; } }
@@ -325,6 +330,7 @@ html {
   }
   
   /* Simple CSS3 Fade-in Animation */
+  /*
   .underlineHover:after {
     display: block;
     left: 0;

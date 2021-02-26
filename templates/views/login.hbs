@@ -3,21 +3,21 @@
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>MSO Rooms - Login</title>
+    <title>MSOgoesBolivien - Login</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
     <link rel='stylesheet' type='text/css' media='screen' href='/css/Login.css'>
     
   
 </head>
 <body>
- <div class="Headercenter"><h1>Login</h1></div>  
+  <!-- Überschrift über der Navigationsleiste-->
+ <div class="Headercenter"><h1>Anmeldng</h1></div>  
 
 
-  <a href="index.html"><img src="https://www.marienschule.com/assets/MSOLogo-84510ebbb836300f53362971b6f5fe13d66642acf46fe82d95e4ee4fb65822b5.svg" alt="logo"></a>
-
+<!-- Navigationsleiste -->
   {{>nav}}  
 
-
+<!-- Hinweis auf Registrierung am oberen bereich des Login Fensters -->
 <div class="Headercenter">
 <h2>Hey, Hast du bereits einen Account? Sonst registriere dich <a href="/signup">hier</a></h2>
 </div>
@@ -25,29 +25,37 @@
     <div id="formContent">
       
   
-      <!-- Login Form -->
+<!-- Login Form -->
       <form>
-        <input type="text" id="login" class="fadeIn second"  placeholder="vorname.nachname@marienschule.com" >
-        <input type="password" id="password" class="fadeIn third"  placeholder="Ihr Office Passwort" >
+        <input type="text" id="login" class="fadeIn second"  placeholder="Dein Selbstgewählter Benutzername" >
+        <input type="password" id="password" class="fadeIn third"  placeholder="Zugewiesenes Passwort" >
         <button id="pissof">Submit</button>
       </form>
-  
+    
     <h1 id="INFO"></h1>
-
-    <a href="/singUp">Fals du keinen Acc hast klicke hier</a>
-
+ <!-- Registrierungslink in Anmeldefenster -->
+    <a href="/singUp">Noch keinen Account? Klicke hier!</a>
 
     </div>
   </div>
+  <!-- footer mit Impressum und Datenschutz -->
   <footer>
     <p>&copy; Copyrigt 2021 Robin W. & Jonas L. im Auftrag von der Marienschule Opladen  </p> 
-      <p><a href="Impressum.html">Impressum</a> <a href="Datenschutz.html">Datenschutz</a></p>
+      <p><a href="/impressum">Impressum</a> <a href="/Datenschutz">Datenschutz</a></p>
   
   </footer>
   
 </body>
 
+<!-- Login Skript -->
 <script src="/js/logIn.js"></script>
+
+<!-- Footer mit Impressums und Datenschutz Links -->
+<footer>
+  <p>&copy; Copyrigt 2021 Robin W. & Jonas L. im Auftrag der Marienschule Opladen
+  </p>
+  <p><a href="Impressum.html">Impressum</a> <a href="Datenschutz.html">Datenschutz</a></p>
+</footer>
 
 </html>
 

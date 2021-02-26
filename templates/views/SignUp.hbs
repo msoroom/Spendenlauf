@@ -1,13 +1,24 @@
 
 <div class="back"></div>
 <div class="registration-form">
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <title>MSOgoesBolivien - SignUp</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/css/Login.css'>
+</head>
   <header>
-    <h1>Sign Up</h1>
+  
+    <h1>Registrierung</h1>
     <p>Fill in all informations</p>
   </header>
+  <body>
+    {{>nav}} 
+
   <form>
     <div class="input-section name-selection ">
-      <input class="name" type="name" placeholder="" autocomplete="off"/>
+      <input class="name" type="name" placeholder="Benutzername" autocomplete="off"/>
     </div>
     
    <div>
@@ -32,7 +43,7 @@
     <div class="success"> 
       
     </div>
-    <button>SingUp</button>
+    <button>Registrieren</button>
   </form>
 
   <div>
@@ -43,3 +54,4 @@
  
 <script src="/js/SignUp.js"></script>
 </div>
+</body>
