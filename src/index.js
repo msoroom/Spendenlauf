@@ -53,17 +53,24 @@ const b = async ()=>{
     try {  
         const users = await User.find({}) 
         var distance = 0
+        var diststufe = []
         users.forEach((user)=> {
-            distance = distance + user.distance      
+            
+            diststufe[user.stufe] += user.distance
+            
+            distance = distance + user.distance    
+            
+            
         })   
         process.env.DISTOTAL = distance
+        process.env.DISTSTUFE = diststufe
        //console.log( "das ist funkiton "+ process.env.DISTOTAL +"abc"+ distance+ "" )
             
     } catch(e){console.log(e)}
     
 }
 
- setInterval(b,  5000 )
+ setInterval(b,  60000 )
 
 
 
