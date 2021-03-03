@@ -27,11 +27,16 @@ app.set('views', viewsPath)
 hbs.registerPartials(partialsPath)
 
 
-//routers
+
 app.use(express.static(publicDirectoryPath))
 app.use(express.json())
 app.use(cookieParser())
 app.use(express.urlencoded({ extended: false }))
+
+
+
+
+//routers
 app.use(userRouter)
 app.use(userInterface)
 app.use(runsRouter)
@@ -56,7 +61,7 @@ const b = async ()=>{
         var diststufe = []
         users.forEach((user)=> {
             
-            diststufe[user.stufe] += user.distance
+            diststufe[user.stufe-5] += user.distance
             
             distance = distance + user.distance    
             
@@ -74,3 +79,4 @@ const b = async ()=>{
 
 
 
+//todo  anbieter wechsel Hetzner
