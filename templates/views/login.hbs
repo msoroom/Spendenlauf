@@ -1,60 +1,59 @@
 <!DOCTYPE html>
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>MSOgoesBolivien - Login</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet' type='text/css' media='screen' href='/css/Login.css'>
-    
-  
-</head>
-<body>
-  <!-- Überschrift über der Navigationsleiste-->
- <div class="Headercenter"><h1>Anmeldng</h1></div>  
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Marienschule Opladen | Spendenlauf</title>
 
-
-<!-- Navigationsleiste -->
-  {{>nav}}  
- 
-
-  
-
-<!-- Hinweis auf Registrierung am oberen bereich des Login Fensters -->
-<div class="Headercenter">
-<h2>Hey, Hast du bereits einen Account? Sonst registriere dich <a href="/singup">hier</a></h2>
-</div>
- <div class="wrapper fadeInDown">
-    <div id="formContent">
-      
-  
-<!-- Login Form -->
-      <form>
-        <input type="text" id="login" class="fadeIn second"  placeholder="Dein Selbstgewählter Benutzername" >
-        <input type="password" id="password" class="fadeIn third"  placeholder="Zugewiesenes Passwort" >
-        <button id="pissof">Submit</button>
-      </form>
-    
-    <h1 id="INFO"></h1>
- <!-- Registrierungslink in Anmeldefenster -->
-    <a href="/singUp">Noch keinen Account? Klicke hier!</a>
-
+    </head>
+    <body>
+        <div class="title-container">
+       <a href="/"></a> <img class="logo" src="img/marienschule.png"></a>
+        <h1>Spendenlauf der Marienschule Opladen</h1>    
     </div>
+    <!--<div class="menu-center"> -->
+    <div id="menu">
+     <ul>
+          <a href="/home"><li>Home</li></a>
+          <a href="/UeberdasProjekt"><li>ÜberdasProjekt</li></a>
+          <a href="/me"><li>Dashboard</li></a>
+          <a href="/login"><li>Login</li></a>
+          <!--
+          <a href="#"><li>Gästebuch</li></a>
+          <a href="#"><li>Impressum</li></a>
+          -->
+     </ul>
+    </div>
+>       </div>
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+    <!-- Tabs Titles -->
+    <h2 class="active"> Sign In </h2>
+    <h2 class="inactive underlineHover"><a href="/me">Gehe zum Dashboard</a></h2>
+
+    
+
+    <!-- Login Form -->
+    <form>
+      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Dein Selbstgewählter Benutzername">
+      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Das zugewiesene Passwort">
+      <button id="pissof">Submit</button>
+    </form>
+
+    <!-- Remind Passowrd -->
+    <div id="formFooter">
+      <a class="underlineHover" href="/SingUp">Registrieren</a>
+    </div>
+
   </div>
-</body>
+</div>
 
-  
+<div class="footer">
+    <h1>Copyright by Marienschule Opladen, 2021</h1>
+    <p><a href="/impressum">Impressum</a> <a href="/Datenschutz">Datenschutz</a></p>
+</div>
+    </body>
 
-
-<!-- Login Skript -->
+    <!-- Login Skript -->
 <script src="/js/logIn.js"></script>
-
-<!-- Footer mit Impressums und Datenschutz Links -->
-<footer>
-  <p>&copy; Copyrigt 2021 Robin W. & Jonas L. im Auftrag der Marienschule Opladen
-  </p>
-  <p><a href="Impressum.html">Impressum</a> <a href="Datenschutz.html">Datenschutz</a></p>
-</footer>
-
 </html>
-

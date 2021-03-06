@@ -1,37 +1,66 @@
 <!DOCTYPE html>
-
 <html>
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Spendenlauf</title>
-    <link rel="icon" type="image/png" href="/pics/Abstand.png">
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel='stylesheet'  href='/css/styles.css'>
-    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet">
-</head>
-<body>
-t
-  <!--Navigationsmenü-->  
-{{>nav}}
+    <head>
+        <link rel="stylesheet" href="styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Marienschule Opladen | Spendenlauf</title>
 
-<div class="Headercenter">
-<h3>Hallo, auf dieser Seite findest du:
-  <li>2 Filme</li>
-  <li>Eine Spendenmöglichkeit</li>
-  <li>Dokumente wie, Laufzettel, Broschüren etc.</li>
-</h3>
-</div>
- <div class="center-align">
-  <iframe width="560" height="315" src="https://www.youtube.com/embed/tLzK_buEElo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    </head>
+    <body>
+        <div class="title-container">
+       <a href="/"></a> <img class="logo" src="img/marienschule.png"></a>
+        <h1>Spendenlauf der Marienschule Opladen</h1>    
+    </div>
+    <!--<div class="menu-center"> -->
+    <div id="menu">
+     <ul>
+          <a href="/home"><li>Home</li></a>
+          <a href="/UeberdasProjekt"><li>ÜberdasProjekt</li></a>
+          <a href="/me"><li>Dashboard</li></a>
+          <a href="/login"><li>Login</li></a>
+          <!--
+          <a href="#"><li>Gästebuch</li></a>
+          <a href="#"><li>Impressum</li></a>
+          -->
+     </ul>
+    </div>
+>       </div>
+    <div class="header-container">
+        <img class="header-img" src="img/header-img.png">
+    </div>
+    <div class="top-text-container">
+        <img src="icons/running (1).png">
+        <h1> Weitere Information über das Projekt </h1>
+        <p>Du hast noch fragen? Oder suchst nach weiteren Infos, deinem Laufzettel oder möchtest Spenden? Das alles findest du auf dieser Seite!</p>
+    <iframe width="560" height="315" src="https://www.youtube.com/embed/tLzK_buEElo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    <hr>
   <iframe width="560" height="315" src="https://www.youtube.com/embed/X8Psv5XgRgo" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
-</body>
-<footer>
-  <p>&copy; Copyrigt 2021 Robin W. & Jonas L. im Auftrag von der Marienschule Opladen
-  </p>
-  <p><a href="/impressum">Impressum</a> <a href="/Datenschutz">Datenschutz</a></p>
-</footer>
-</html>
+    </div>
+    <div class="grey-area">
+    <div class="mso-goes-bolivien">
+        <img class="bolivien" src="img/bolivien.png">
+        <h1>Downloads</h1>
+        <span class="sub-text"></span>
+        <p>
+            <ul>
+                <a href="#">Laufzettel</a>
+                <a href="#">Laufzettel</a> 
 
-<!--(c)2021 Robin Wendt-->
+            </ul>
+        </p>
+    </div>
+</div>
+ <div class="top-text-container">
+        <img src="icons/running (1).png">
+        <h1>Spendenwidget</h1>
+        <p>Du/sie oder ihr Läufer hat bereits seine Läufe abgeschlossen? Dann spenden sie hier über das Widget oder auf der <a href="https://www.misereor.de/spenden/spendenaktionen/eigene-spendenaktion-starten/?cfd=nwqv6">Miserior Homepage</a>
+        </p>
+        <!-- Begin FundraisingBox --> <script type='text/javascript'> var fb_config = {  'show_expired': '1',  'target': '_blank',  'domains': 'nwqv6', }; var fb_params = ''; for(var key in fb_config) { fb_params += '&'+key+'='+encodeURI(fb_config[key]); } document.write(String.fromCharCode(60)+"script type='text/javascript' src='https://secure.fundraisingbox.com/app/widgetJS?cfl=6042a68b48693&cfh=qm9d0ivs"+fb_params+"'>"+String.fromCharCode(60)+"/script>"); </script><noscript>Bitte Javascript aktivieren</noscript> <!-- End FundraisingBox --> 
+
+    </div>
+<div class="footer">
+    <h1>Copyright by Marienschule Opladen, 2021</h1>
+    <p><a href="/impressum">Impressum</a> <a href="/Datenschutz">Datenschutz</a></p>
+</div>
+    </body>
+</html>
