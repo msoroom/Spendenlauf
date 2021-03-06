@@ -61,11 +61,7 @@ const b = async ()=>{
         var diststufe = []
         users.forEach((user)=> {
             
-<<<<<<< HEAD
             diststufe[user.stufe - 5] += user.distance
-=======
-            diststufe[user.stufe-5] += user.distance
->>>>>>> 3ed4d2c81daf876bb3678ab90371697ed122c7f7
             
             distance = distance + user.distance    
             

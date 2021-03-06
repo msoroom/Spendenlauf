@@ -37,7 +37,7 @@ router.get('/singUp', (req, res) => {
 
 
 })
-router.get('/singIn', (req, res) => {
+router.get('/login', (req, res) => {
 
     res.render('login', {
 
