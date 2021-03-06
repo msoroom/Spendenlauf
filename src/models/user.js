@@ -1,9 +1,8 @@
 const mongoose = require('mongoose')
 const bcrypt = require('bcryptjs')
 const jwt = require('jsonwebtoken')
-const uid = require('shortid')
 const Runs = require('./runs')
-const { Binary } = require('mongodb')
+
 
 
 const userSchema = new mongoose.Schema({

@@ -56,7 +56,7 @@ const b = async ()=>{
         var diststufe = []
         users.forEach((user)=> {
             
-            diststufe[user.stufe] += user.distance
+            diststufe[user.stufe - 5] += user.distance
             
             distance = distance + user.distance    
             
@@ -70,7 +70,7 @@ const b = async ()=>{
     
 }
 
- setInterval(b,  60000 )
+ setInterval(b,  60_000 )
 
 
 

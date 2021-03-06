@@ -1,5 +1,5 @@
 const mongoose = require('mongoose')
-const User = require('./user')
+
 
 const runSchema = new mongoose.Schema({
 

@@ -1,7 +1,6 @@
 const express  = require('express')
 const Runs = require('../models/runs')
 const auth = require('../middleware/auth')
-const User = require('../models/user')
 
 const router = new express.Router()
 
@@ -23,7 +22,7 @@ router.post('/runs',auth, async(req, res) => {
          await run.save()
         
      
-         
+         //5-4,40
      
 
     req.user.distance += run.distance

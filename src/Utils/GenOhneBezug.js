@@ -1,8 +1,5 @@
-
-const { rejects } = require('assert');
 const { randomInt } = require('crypto');
 const fs = require('fs');
-const { resolve } = require('path');
 const qr = require('qrcode')
 const {PassThrough}=require('stream')
 const sharp = require('sharp')
