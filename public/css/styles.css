@@ -544,3 +544,11 @@ input[type=password]:placeholder {
 * {
   box-sizing: border-box;
 }
+
+.button {
+  font-size: 10px;
+  border-radius: 8px;
+  background-color: lightcoral;
+  color: black;
+
+}
