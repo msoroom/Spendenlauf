@@ -1,38 +1,26 @@
 <!DOCTYPE html>
 
 <html>
+    <head>
+        <link rel="stylesheet" href="css/styles.css">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <title>Marienschule Opladen | Spendenlauf</title>
 
-<head>
-    <meta charset='utf-8'>
-    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>MSOgoesBolivien - Dashboard</title>
-    <meta name='viewport' content='width=device-width, initial-scale=1'>
-    <link rel="stylesheet" href="css/styles.css">
-</head>
-
-
-<body>
+    </head>
+    <body>
         <div class="title-container">
        <a href="/"></a> <img class="logo" src="pics/marienschule.png"></a>
         <h1>Spendenlauf der Marienschule Opladen</h1>    
     </div>
-<body id="Content">
-    <div id="menu">
-     <ul>
-          <a href="/"><li>Home</li></a>
-          <a href="/UeberdasProjekt"><li>ÜberdasProjekt</li></a>
-          <a href="/me"><li>Dashboard</li></a>
-          <a href="/login"><li>Login</li></a>
-          <!--
-          <a href="#"><li>Gästebuch</li></a>
-          <a href="#"><li>Impressum</li></a>
-          -->
-              <button id="Logedout">LogOut</button>
-    <script src="/js/logOut.js"></script>
-     </ul> 
-     
+    {{>nav}} 
+
+    <div class="header-container">
+        <img class="header-img" src="pics/header-img.png">
     </div>
-      </div>
+    <div class="top-text-container">
+ 
+  
+<body id="Content">
 
 <div class="center-align">
 {{>runned}}
@@ -43,8 +31,7 @@
 
 Du bist schon {{Userdistance}} Kilometer gelaufen
 </div>
-
-<img src="/users/{{uid}}/qr" id="qrcode" alt="">
+  </div>
 
 
 </body>
@@ -52,7 +39,11 @@ Du bist schon {{Userdistance}} Kilometer gelaufen
     {{>addarun}}
 
     </div>
-
+    <div class="grey-area">
+    <div class="mso-goes-bolivien">
+<img src="/users/{{uid}}/qr" id="qrcode" alt="">
+</div>
+</div></div>
 <!-- Footer mit Impressums und Datenschutz Links -->
 
 <div class="footer">
