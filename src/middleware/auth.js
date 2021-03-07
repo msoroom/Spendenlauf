@@ -22,7 +22,7 @@ const auth = async(req, res, next)=>{
 
     } catch (e) {
         
-        res.status(401).render('SignUp',{})
+        res.status(401).redirect('/login');
         
 
     }

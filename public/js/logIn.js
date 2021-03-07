@@ -37,10 +37,7 @@ button.addEventListener('submit', async(e)=>{
     .then(content =>{
 
         if(!content) return val.textContent = 'DU bist gescheitert'
-        content = JSON.parse(content)
-        val.textContent = "You are Loged in " + content.user.name
         window.location.assign('/me')
-
       })
       
       .catch(error => console.log(error));
