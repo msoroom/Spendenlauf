@@ -552,3 +552,11 @@ input[type=password]:placeholder {
   color: black;
 
 }
+
+.center-align {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+
+}
