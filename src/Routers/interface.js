@@ -75,6 +75,7 @@ router.get('/profiles/:id', async (req, res) => {
 })
 
 
+
 router.get('/me', auth, (req, res) => {
 
     res.render('me', {

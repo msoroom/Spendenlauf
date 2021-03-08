@@ -31,22 +31,18 @@ const requestOptions = {
 };
 
  
- fetch("/users", requestOptions).then(res => res.text())
-  .then(response => {
+ fetch("/users", requestOptions)
+  .then(async(response) => {
 
-    if(response.error) {
+    if(response.status != 201) {
 
-      succ.textContent = 'faild'
+      succ.textContent = 'Es ist ein Fehler aufgetreten. \r\n Versuchen sie einen Anderen Benutzernamen und \r\n versichern sie sich, dass sie ihre Stufe angegeben haben.'
 
     }
     else{
-     
-      response = JSON.parse(response)
-
-      console.log(response.creds)
-
+       response = await response.text()
+       response = JSON.parse(response)
       succ.textContent = "Öfentlicherzugang: " +window.location.origin+"/profiles/"+ response.creds.uid +"\n Password:"+JSON.stringify(response.creds.password)
-      
     }
 
   })
