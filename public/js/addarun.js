@@ -1,5 +1,6 @@
 const buttonkkl = document.querySelector('#confirminput')
 const kminput = document.querySelector('#distanceinput')
+const confirm = document.querySelector('#conf')
 
 
 
@@ -13,13 +14,10 @@ myHeaders.append("Content-Type", "application/json");
 
 const dis = parseInt(kminput.value)
  
-console.log(dis)
-
 var raw = JSON.stringify({
     "distance": dis
     
 })
-
 
 var requestOptions = {
   method: 'POST',
@@ -29,15 +27,15 @@ var requestOptions = {
 };
 
 fetch("/runs", requestOptions)
-  .then(response => response.text())
-  .then(result => console.log(result))
-  .catch(error => console.log('error', error));
+  .then(result => {
+
+    if(result.status != 200 ) return confirm.textContent = "Das hinzufügen des Laufes ist fehlgeschlagen "
+    kminput.value = 0
+    return confirm.textContent = "Du hast einen Lauf hinzugefügt"
+  }
+  
+  )
+  .catch(error => confirm.textContent = "Das hinzufügen des Laufes ist fehlgeschlagen ");
 
     
-
-
-
-
-
-
 })

@@ -5,7 +5,18 @@ const runSchema = new mongoose.Schema({
 
     distance:{
         type: Number,
-        require : true
+        require : true,
+        min: 1,
+        validate(value) {
+
+            if(value == null){
+
+                throw new Error('Value cannot be null')
+
+            }
+
+
+        }
 
 
     }, 

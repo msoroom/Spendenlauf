@@ -31,11 +31,6 @@ router.get('/singUp', (req, res) => {
     res.render('SignUp', {
 
     })
-
-
-
-
-
 })
 router.get('/login', (req, res) => {
 

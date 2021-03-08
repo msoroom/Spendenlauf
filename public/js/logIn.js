@@ -36,7 +36,7 @@ ad.addEventListener('submit', async(e)=>{
     .then(response => response.text())
     .then(content =>{
 
-        if(!content) return val.textContent = 'DU bist gescheitert'
+        if(!content) return
         window.location.assign('/me')
       })
       
