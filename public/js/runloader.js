@@ -41,9 +41,8 @@ window.onload =  async () => {
             var bud
             
             dt = document.createElement("dt")
-            dt.innerHTML = "Lauf vom "+ m.createdAt.split('T')[0] +". Mit einer Distance von "+ m.distance+"."
+            dt.innerHTML = "Lauf vom "+ m.createdAt.split('T')[0] +". Mit einer Distance von "+ m.distance+"km."
             dt.value = m._id
-            dt
             bud = document.createElement("button")
             
             bud.value = m._id

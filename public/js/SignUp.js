@@ -42,7 +42,7 @@ const requestOptions = {
     else{
        response = await response.text()
        response = JSON.parse(response)
-      succ.textContent = "Öfentlicherzugang: " +window.location.origin+"/profiles/"+ response.creds.uid +"\n Password:"+JSON.stringify(response.creds.password)
+      succ.textContent = "öffentlicher Zugang: " +window.location.origin+"/profiles/"+ response.creds.uid +"\n Password:"+JSON.stringify(response.creds.password)
     }
 
   })
