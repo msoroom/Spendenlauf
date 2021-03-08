@@ -1,12 +1,12 @@
 const emaild = document.querySelector('#login')
 const pwdd = document.querySelector('#password')
-const button = document.querySelector('form')
+const ad = document.querySelector('form')
 const val = document.querySelector('#INFO')
 
 
 
 
-button.addEventListener('submit', async(e)=>{
+ad.addEventListener('submit', async(e)=>{
 
    
   e.preventDefault()
