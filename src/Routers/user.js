@@ -49,7 +49,6 @@ router.post('/users', async (req, res) => {
 
     }
     catch (e) {
-        console.log(e)
         res.status(401).send()
 
     }
@@ -213,7 +212,6 @@ router.get('/users/:id/qr', async (req, res) =>{
         res.send(buffer)
 
     } catch (e) {
-        console.log(e)
         res.status(404).send()
     }
 
