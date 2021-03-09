@@ -91,7 +91,7 @@ router.get('/me', auth, (req, res) => {
 
 router.get('/datenschutz', (req, res) => {
 
-    res.render('Datenschut', {
+    res.render('Datenschutz', {
 
 
     })
