@@ -9,7 +9,7 @@ router.get('/', (req, res) => {
 
     res.render('index', {
 
-
+        distance: process.env.DISTOTAL
 
     })
 
