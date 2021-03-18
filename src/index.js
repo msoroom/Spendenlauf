@@ -82,7 +82,7 @@ const b = async ()=>{
     
 }
 
- setInterval(b,  60_000 )
+ setInterval(b,  10_000 )
 
 
 
