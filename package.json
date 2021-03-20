@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": " node src/index.js",
-    "dev": "env-cmd -f ./config/dev.env nodemon  src/index.js -e js,hbs,css ",
-    "temp":"env-cmd -f ./config/dev.env node backutils/aufräumen.js"
+    "dev": "env-cmd -f ./config/dev.env nodemon  src/index.js -e js,hbs,css "
+
   },
   "author": "Jonas",
   "license": "ISC",
