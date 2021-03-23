@@ -1,2 +1,3 @@
 # Spendenlauf
-https://msogoesbolivien.herokuapp.com/singIn
+https://msogoesbolivien.herokuapp.com/
+
