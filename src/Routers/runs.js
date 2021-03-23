@@ -1,83 +1,66 @@
-const express  = require('express')
-const Runs = require('../models/runs')
-const auth = require('../middleware/auth')
+const express = require("express");
+const Runs = require("../models/runs");
+const auth = require("../middleware/auth");
 
-const router = new express.Router()
+const router = new express.Router();
 
+router.post("/runs", auth, async (req, res) => {
+  var run = new Runs({
+    ...req.body,
+    owner: req.user._id,
+  });
 
-router.post('/runs',auth, async(req, res) => {
-    
+  try {
+    await run.save();
 
-    
+    //5-4,40
 
-    var run = new Runs({
-        ...req.body,
-        owner : req.user._id
+    req.user.distance += run.distance;
 
-    })
+    await req.user.save();
 
-    try {
-    
-        
-         await run.save()
-        
-     
-         //5-4,40
-     
-
-    req.user.distance += run.distance
-
-     await req.user.save()
-
-        res.status(200).send(run)
-    } catch (error) {    
-       console.log(error)
-        res.status(500).send()
-    }
-})
+    res.status(200).send(run);
+  } catch (error) {
+    console.log(error);
+    res.status(500).send();
+  }
+});
 // GET /runs?sortBy=stufe=strufe
 // GET /runs?limit=10&skip10
 // GET /runs?sortBy=createdAt:desc||asc / sortBy=stufe
-router.get('/runs/me',auth, async (req, res) => {
-        
-        const sort = {}
+router.get("/runs/me", auth, async (req, res) => {
+  const sort = {};
 
-        if(req.query.sortBy){
+  if (req.query.sortBy) {
+    const parts = req.query.sortBy.split(":");
 
-            const parts = req.query.sortBy.split(':')
+    sort[parts[0]] = parts[1] === "desc" ? -1 : 1;
+  }
 
-            sort[parts[0]] = parts[1] === 'desc' ? -1 : 1
-        }
+  try {
+    await req.user
+      .populate({
+        path: "runs",
+        options: {
+          limit: parseInt(req.query.limit),
+          skip: parseInt(req.query.skip),
+          sort,
+        },
+      })
+      .execPopulate();
 
-    try {
-        
-        await req.user.populate({
+    res.send(req.user.runs);
+  } catch (error) {
+    res.status(500).send();
+  }
+});
 
-        path: 'runs',
-        options:{
-
-            limit: parseInt(req.query.limit),
-            skip: parseInt(req.query.skip),
-            sort
-        }
-
-       }).execPopulate()
-    
-    
-       res.send(req.user.runs)
-
-    } catch (error) {
-        res.status(500).send()
-    }
-    
-})
-
-//public backpoint for stufen fetching 
+//public backpoint for stufen fetching
 // GET /runs?sortBy=stufe=strufe
 // GET /runs?limit=10&skip10
 // GET /runs?sortBy=createdAt:desc||asc / sortBy=stufe
 // router.get('/runs', async (req, res) => {
-        
+
 //     const sort = {}
 
 //     if(req.query.sortBy){
@@ -88,15 +71,14 @@ router.get('/runs/me',auth, async (req, res) => {
 //     }
 
 // try {
-    
+
 //     runs = await Runs.find({},{
 
 //         options:{
 //             sort
 //         }
-    
-//        })
 
+//        })
 
 //    res.send(runs)
 
@@ -110,54 +92,37 @@ router.get('/runs/me',auth, async (req, res) => {
 //     const _id = req.params.id
 
 // try {
-    
+
 //    // const runs = await Runs.findById({_id, owner: req.user._id})
 //     const runs = await req.user.populate('runs').execPopulate()
-    
+
 //     if(!run) res.status(404).send()
-    
+
 //     res.send(run)
 
-
 // } catch (error) {
-    
-//  res.status(500).send()
 
+//  res.status(500).send()
 
 // }
 // })
 
+router.delete("/runs/:id", auth, async (req, res) => {
+  try {
+    const run = await Runs.findByIdAndDelete({
+      _id: req.params.id,
+      owner: req.user._id,
+    });
 
+    if (!run) return res.status(404).send();
 
-router.delete('/runs/:id',auth, async(req,res)=>{
+    req.user.distance -= run.distance;
 
+    await req.user.save();
+    res.send(run);
+  } catch (e) {
+    res.status(500).send();
+  }
+});
 
-    try {
-        
-        const run = await Runs.findByIdAndDelete({_id:req.params.id, owner: req.user._id})
-
-        if(!run) return res.status(404).send()
-        
-        
-        req.user.distance -= run.distance
-
-        await req.user.save()
-        res.send(run)
-
-
-    } catch (e) {
-        
-        res.status(500).send()
-
-    }
-
-
-
-})
-
-
-module.exports = router
-
-
-
-
+module.exports = router;

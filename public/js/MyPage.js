@@ -1,12 +1,3 @@
+const main = () => {};
 
-
-const main = () =>{
-
-
-
-
-
-}
-
-
-main()
+main();

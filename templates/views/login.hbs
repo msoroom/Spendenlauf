@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="css/styles.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Marienschule Opladen | Spendenlauf</title>
 
-    </head>
-    <body>
-        <div class="title-container">
-       <a href="/"></a> <img class="logo" src="pics/marienschule.png"></a>
-        <h1>Spendenlauf der Marienschule Opladen</h1>    
-    </div>
-    {{>nav}} 
-<div class="wrapper fadeInDown">
-  <div id="formContent">
-    <!-- Tabs Titles -->
-    <h2 class="active"> Sign In </h2>
-    <h2 class="inactive underlineHover"><a href="/me">Gehe zum Dashboard</a></h2>
+<head>
+  <link rel="stylesheet" href="css/styles.css">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Marienschule Opladen | Spendenlauf</title>
 
-    
+</head>
 
-    <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="Dein Selbstgewählter Benutzername">
-      <input type="password" id="password" class="fadeIn third" name="login" placeholder="Das zugewiesene Passwort">
-      <div class="button">
-        <button id="pissof">Submit</button>
-      </div>
-    </form>
-
-    <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="/SingUp">Registrieren</a>
-    </div>
-
+<body>
+  <div class="title-container">
+    <a href="/"></a> <img class="logo" src="pics/marienschule.png"></a>
+    <h1>Spendenlauf der Marienschule Opladen</h1>
   </div>
-</div>
+  {{>nav}}
+  <div class="wrapper fadeInDown">
+    <div id="formContent">
+      <!-- Tabs Titles -->
+      <h2 class="active"> Sign In </h2>
+      <h2 class="inactive underlineHover"><a href="/me">Gehe zum Dashboard</a></h2>
 
-<div class="footer">
+
+
+      <!-- Login Form -->
+      <form>
+        <input type="text" id="login" class="fadeIn second" name="login"
+          placeholder="Dein Selbstgewählter Benutzername">
+        <input type="password" id="password" class="fadeIn third" name="login" placeholder="Das zugewiesene Passwort">
+        <div class="button">
+          <button id="pissof">Submit</button>
+        </div>
+      </form>
+
+      <!-- Remind Passowrd -->
+      <div id="formFooter">
+        <a class="underlineHover" href="/SingUp">Registrieren</a>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
     <h1>Copyright by Marienschule Opladen, 2021</h1>
     <p><a href="/impressum">Impressum</a> <a href="/datenschutz">Datenschutz</a></p>
-</div>
-    </body>
+  </div>
+</body>
 
-    <!-- Login Skript -->
+<!-- Login Skript -->
 <script src="/js/logIn.js"></script>
+
 </html>

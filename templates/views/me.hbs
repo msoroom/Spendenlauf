@@ -1,54 +1,57 @@
 <!DOCTYPE html>
 
 <html>
-    <head>
-        <link rel="stylesheet" href="css/styles.css">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Marienschule Opladen | Spendenlauf</title>
 
-    </head>
-    <body>
-        <div class="title-container">
-       <a href="/"></a> <img class="logo" src="pics/marienschule.png"></a>
-        <h1>Spendenlauf der Marienschule Opladen</h1>    
+<head>
+    <link rel="stylesheet" href="css/styles.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Marienschule Opladen | Spendenlauf</title>
+
+</head>
+
+<body>
+    <div class="title-container">
+        <a href="/"></a> <img class="logo" src="pics/marienschule.png"></a>
+        <h1>Spendenlauf der Marienschule Opladen</h1>
     </div>
-    {{>nav}} 
+    {{>nav}}
 
     <div class="header-container">
         <img class="header-img" src="pics/header-img.png">
     </div>
     <div class="top-text-container">
- 
-  
-<body id="Content">
-
-<div class="center-align">
-{{>runned}}
 
 
+        <body id="Content">
 
- <h2>{{name}}</h2>
+            <div class="center-align">
+                {{>runned}}
 
-Du bist schon {{Userdistance}} Kilometer gelaufen
-</div>
-  </div>
+
+
+                <h2>{{name}}</h2>
+
+                Du bist schon {{Userdistance}} Kilometer gelaufen
+            </div>
+    </div>
 
 
 </body>
-    <div class="center-align">
+<div class="center-align">
     {{>addarun}}
 
-    </div>
+</div>
 
-    
+
 <dl id="out"></dl>
 <script src="/js/runloader.js"></script>
 
-    <div class="grey-area">
+<div class="grey-area">
     <div class="mso-goes-bolivien">
-<img src="/users/{{uid}}/qr" id="qrcode" alt="">
+        <img src="/users/{{uid}}/qr" id="qrcode" alt="">
+    </div>
 </div>
-</div></div>
+</div>
 <!-- Footer mit Impressums und Datenschutz Links -->
 
 <div class="footer">
@@ -56,4 +59,5 @@ Du bist schon {{Userdistance}} Kilometer gelaufen
     <p><a href="/impressum">Impressum</a> <a href="/datenschutz">Datenschutz</a></p>
 </div>
 </body>
+
 </html>
