@@ -30,16 +30,20 @@ app.use(cookieParser());
 app.use(express.urlencoded({ extended: false }));
 
 //routers
-app.use(userRouter);
-app.use(userInterface);
-app.use(runsRouter);
+app.get("*", (req, res) => {
+  res.redirect("https://www.marienschule.com/");
+});
+
+// app.use(userRouter);
+// app.use(userInterface);
+// app.use(runsRouter);
 
 app.listen(port, () => {
   console.log("Server is up on port " + port);
 });
 
 app.get("*", (req, res) => {
-  res.redirect("/");
+  res.redirect("https://www.marienschule.com/");
 });
 
 const b = async () => {

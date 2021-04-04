@@ -55,7 +55,7 @@ router.get("/runs/me", auth, async (req, res) => {
   }
 });
 
-//public backpoint for stufen fetching
+// public backpoint for stufen fetching
 // GET /runs?sortBy=stufe=strufe
 // GET /runs?limit=10&skip10
 // GET /runs?sortBy=createdAt:desc||asc / sortBy=stufe
